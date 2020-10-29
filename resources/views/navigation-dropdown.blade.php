@@ -13,8 +13,17 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Painel') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('categorias-admin') }}" :active="request()->routeIs('categorias-admin')">
+                        {{ __('Categorias') }}
+                    </x-jet-nav-link>                    
+                    <x-jet-nav-link href="{{ route('produtos-admin') }}" :active="request()->routeIs('produtos-admin')">
+                        {{ __('Produtos') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('obras-admin') }}" :active="request()->routeIs('obras-admin')">
+                        {{ __('Obras') }}
+                    </x-jet-nav-link>                    
                 </div>
             </div>
 
@@ -28,7 +37,7 @@
                             </button>
                         @else
                             <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                                <div>{{ Auth::user()->name }}</div>
+                                <div>{{ Auth::user()->name }}</div>                               
 
                                 <div class="ml-1">
                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -42,11 +51,11 @@
                     <x-slot name="content">
                         <!-- Account Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Account') }}
+                            {{ __('Gerenciar Conta') }}
                         </div>
 
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-jet-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -95,7 +104,7 @@
                             <x-jet-dropdown-link href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
-                                {{ __('Logout') }}
+                                {{ __('Sair') }}
                             </x-jet-dropdown-link>
                         </form>
                     </x-slot>

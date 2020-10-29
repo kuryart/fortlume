@@ -13,15 +13,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// === HOME ===
 Route::get('/', function () {
     return view('index.index');
 });
 
-// === Admin ===
-Route::get('/admin', 'AuthController@dashboard')->name('admin');
-Route::get('/admin/login', 'AuthController@showLoginForm')->name('admin.login');
-Route::get('/admin/logout', 'AuthController@logout')->name('admin.logout');
-Route::post('/admin/login/do', 'AuthController@login')->name('admin.login.do');
+// === DASHBOARD ===
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// === CATEGORIAS ===
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorias-admin', 
+    'CategoriaController@index')->name('categorias-admin');
+
+// Route::get('/produtos','ProdutoController@index')->name('produtos.index');
+Route::get('/produtos/create','ProdutoController@create')->name('produtos.create');
+Route::post('/produtos','ProdutoController@store')->name('produtos.store');
+Route::get('/produtos/{produto}','ProdutoController@show')->name('produtos.show');
+Route::get('/produtos/{produto}/edit','ProdutoController@edit')->name('produtos.edit');
+Route::put('/produtos/{produto}','ProdutoController@update')->name('produtos.update');
+Route::delete('/produtos/{produto}','ProdutoController@destroy')->name('produtos.destroy');
+
+
+// === PRODUTOS ===
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-admin', 
+    'ProdutoController@index')->name('produtos-admin');
+
+// === OBRAS ===
+Route::middleware(['auth:sanctum', 'verified'])->get('/obras-admin', 
+    'ObraController@index')->name('obras-admin');    

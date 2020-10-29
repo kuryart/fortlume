@@ -15,7 +15,7 @@ class CreateObrasTable extends Migration
     {
         Schema::create('obras', function (Blueprint $table) {
             $table->id();
-            $table->string('video_url');            
+            $table->string('video_url')->nullable();            
             $table->timestamps();
         });
     }

@@ -7,9 +7,13 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                {{-- <x-jet-welcome /> --}}
-            </div>
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">            
+                <ul id="items">
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                </ul>            
+            </div>            
         </div>
     </div>
 </x-app-layout>

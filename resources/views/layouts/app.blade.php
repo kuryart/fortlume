@@ -10,13 +10,19 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <!-- === Font Awesome === -->
+        <link href="{{ asset('css/all.min.css') }}" rel="stylesheet" />
+
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
-        @livewireStyles
+        @livewireStyles        
 
         <!-- Scripts -->
         <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script>
+        <script src="/js/Sortable.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -38,5 +44,21 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            var categoria = document.getElementById("categoria-ul");
+            var sortable = Sortable.create(categoria);      
+
+            var produtos = document.getElementsByClassName("grid");
+            for (var i = 0; i < produtos.length; i++) {
+                new Sortable(produtos[i], {
+                    group: 'nested',
+                    animation: 150,
+                    fallbackOnBody: true,
+                    swapThreshold: 0.65
+                });
+            }       
+        </script>
+        
     </body>
 </html>

@@ -10,4 +10,4 @@
 <!-- === Google Fonts === -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
 <!-- === Stylesheets === -->
-<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet" />
+<link href="{{ asset('css/app.css') }}" rel="stylesheet" />
