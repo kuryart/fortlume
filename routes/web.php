@@ -24,22 +24,43 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 // === CATEGORIAS ===
+// Index Admin
 Route::middleware(['auth:sanctum', 'verified'])->get('/categorias-admin', 
-    'CategoriaController@index')->name('categorias-admin');
-
-// Route::get('/produtos','ProdutoController@index')->name('produtos.index');
-Route::get('/produtos/create','ProdutoController@create')->name('produtos.create');
-Route::post('/produtos','ProdutoController@store')->name('produtos.store');
-Route::get('/produtos/{produto}','ProdutoController@show')->name('produtos.show');
-Route::get('/produtos/{produto}/edit','ProdutoController@edit')->name('produtos.edit');
-Route::put('/produtos/{produto}','ProdutoController@update')->name('produtos.update');
-Route::delete('/produtos/{produto}','ProdutoController@destroy')->name('produtos.destroy');
-
+    'CategoriaController@indexAdmin')->name('categorias-admin');
+// Store    
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorias', 
+    'CategoriaController@store')->name('categorias.store');
+// Update
+Route::middleware(['auth:sanctum', 'verified'])->get('/categorias/{categoria}', 
+    'CategoriaController@update')->name('categorias.update');
+// Delete
+Route::middleware(['auth:sanctum', 'verified'])->delete('/categorias/{categoria}', 
+    'CategoriaController@destroy')->name('categorias.destroy');
 
 // === PRODUTOS ===
+// Index Admin
 Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-admin', 
-    'ProdutoController@index')->name('produtos-admin');
+    'ProdutoController@indexAdmin')->name('produtos-admin');
+// Store    
+Route::middleware(['auth:sanctum', 'verified'])->post('/produtos', 
+    'ProdutoController@store')->name('produtos.store');
+// Update
+Route::middleware(['auth:sanctum', 'verified'])->put('/produtos/{produto}', 
+    'ProdutoController@update')->name('produtos.update');
+// Delete
+Route::middleware(['auth:sanctum', 'verified'])->delete('/produtos/{produto}', 
+    'ProdutoController@destroy')->name('produtos.destroy');        
 
 // === OBRAS ===
+// Index Admin
 Route::middleware(['auth:sanctum', 'verified'])->get('/obras-admin', 
-    'ObraController@index')->name('obras-admin');    
+    'ObraController@indexAdmin')->name('obras-admin');
+// Store    
+Route::middleware(['auth:sanctum', 'verified'])->get('/obras', 
+    'ObraController@store')->name('obras.store');
+// Update
+Route::middleware(['auth:sanctum', 'verified'])->get('/obras/{obra}', 
+    'ObraController@update')->name('obras.update');
+// Delete
+Route::middleware(['auth:sanctum', 'verified'])->delete('/obras/{obra}', 
+    'ObraController@destroy')->name('obras.destroy');
