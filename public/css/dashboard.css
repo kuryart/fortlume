@@ -268,3 +268,17 @@ label {
   padding: 15px 50px 15px 50px;
   font-size: 16px;
 }
+
+.categoria-btn-edit {
+  margin: 0 0 0 8px;
+}
+
+.btn-add-things {
+  background-color: rgb(34, 88, 237);
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0px 5px 0px 5px;
+  padding: 6px 20px;
+  font-size: 16px;
+}

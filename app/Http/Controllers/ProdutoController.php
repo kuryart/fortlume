@@ -51,7 +51,8 @@ class ProdutoController extends Controller
         $imageName = time().'.'.$imageExtension;
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
-        $imageUrl = '/storage/'.$imageStorePath;
+        // $imageUrl = '/storage/'.$imageStorePath;
+        $imageUrl = $imageStorePath;
 
         $produto = Produto::create([
           'nome' => $request->nome,
@@ -79,7 +80,9 @@ class ProdutoController extends Controller
         $imageName = time().'.'.$imageExtension;
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
-        $imageUrl = '/storage/'.$imageStorePath;
+        // $imageUrl = '/storage/'.$imageStorePath;
+        
+        $imageUrl = $imageStorePath;
 
         $produto->update([
             'nome' => $request->nome,

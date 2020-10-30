@@ -17,7 +17,6 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
-
         @livewireStyles        
 
         <!-- Scripts -->
@@ -61,44 +60,34 @@
             }       
         </script>
 
-        {{-- === PRODUTO ADD === --}}
-        {{-- <script>
-            // Get the modal
-            var modal = document.getElementById("produto-modal-add");
-            
-            // Get the button that opens the modal
-            var btn = document.getElementById("produto-btn-add");
-            
-            // Get the <span> element that closes the modal
-            var span = document.getElementById("produto-close-add");
-
-            // Get the btn-close element that closes the modal
-            var btn-close = document.getElementById("produto-btn-close-add");            
-            
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-                modal.style.display = "block";
-            }
-            
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks on btn-close, close the modal
-            btn-close.onclick = function() {
-                modal.style.display = "none";
-            }            
-            
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-            }
-        </script> --}}
-
         <script>
+            function findByAttributeInParent(el, attr) {        
+                if (el.hasAttribute(attr)) {
+                    return document.getElementById(el.dataset.modal);
+                }
+
+                while (el.parentNode) { 
+                    el = el.parentNode;
+                    if (el.hasAttribute(attr))
+                        return document.getElementById(el.dataset.modal);
+                }
+                return null;
+            }
+
+            function findByAttributeInParent2(el, attr) {        
+                if (el.hasAttribute(attr)) {
+                    return el.getAttribute("data-categoriaId");
+                }
+
+                while (el.parentNode) { 
+                    el = el.parentNode;
+                    if (el.hasAttribute(attr)) {
+                        return el.getAttribute("data-categoriaId");
+                    }
+                }
+                return null;
+            }            
+
             // Open the Modal
             var openTriggers = document.getElementsByClassName("open-modal");
 
@@ -106,14 +95,47 @@
                 var currentOpenTrigger = openTriggers[i];
 
                 currentOpenTrigger.onclick = function(event) { 
-                    var modal;
+                    var modal = findByAttributeInParent(event.target, "data-modal");
 
-                    if (event.target.hasAttribute("data-modal")) {
-                        modal = document.getElementById(event.target.dataset.modal);
-                    } else {
-                        modal = document.getElementById(event.target.parentElement.dataset.modal);
+                    if (modal.id === "categoria-modal-edit") {
+                        var form = document.getElementById("categoria-form-edit");
+                        var categoriaId = findByAttributeInParent2(event.target, "data-categoriaId");                        
+                        var action = "{{ route('categorias.update', '||x||') }}";
+                        var newAction = action.replace("||x||", categoriaId);                        
+                        form.setAttribute("action", newAction);
+                        // INPUTS
+                        var nome = document.getElementById("categoria-edit-nome");                        
+                    } else if (modal.id === "categoria-modal-delete") {
+                        var form = document.getElementById("categoria-form-delete");
+                        var categoriaId = findByAttributeInParent2(event.target, "data-categoriaId");                        
+                        var action = "{{ route('categorias.destroy', '||x||') }}";
+                        console.log(action);
+                        var newAction = action.replace("||x||", categoriaId);
+                        console.log(newAction);
+                        form.setAttribute("action", newAction);
+                    } else if (modal.id === "produto-modal-edit") {
+                        // ACTION
+                        var form = document.getElementById("produto-form-edit");
+                        var produtoId = findByAttributeInParent2(event.target, "data-produtoId");                        
+                        var action = "{{ route('produtos.update', '||x||') }}";
+                        var newAction = action.replace("||x||", produtoId);                        
+                        form.setAttribute("action", newAction);
+                        // INPUTS
+                        var nome = document.getElementById("produto-edit-nome");
+                        var descricao = getElementById("produto-edit-descricao");
+                        var categoria = getElementById("produto-edit-categoria");
+                        var foto = getElementById("produto-edit-foto");
+
+                        // nome.setAttribute("value", produtoId);
+
+                    } else if (modal.id === "produto-modal-delete") {
+                        var form = document.getElementById("produto-form-delete");
+                        var produtoId = findByAttributeInParent2(event.target, "data-produtoId");                        
+                        var action = "{{ route('produtos.destroy', '||x||') }}";
+                        var newAction = action.replace("||x||", produtoId);                        
+                        form.setAttribute("action", newAction);
                     }
-                    
+
                     modal.style.display = "block";
                 };
             }
@@ -125,29 +147,18 @@
                 var currentCloseTrigger = closeTriggers[i];
 
                 currentCloseTrigger.onclick = function(event) { 
-                    var modal;
+                    var modal = findByAttributeInParent(event.target, "data-modal");
+                    // findByTagInChild(modal, "form").reset();
 
-                    if (event.target.hasAttribute("data-modal")) {
-                        modal = document.getElementById(event.target.dataset.modal);
-                    } else {
-                        modal = document.getElementById(event.target.parentElement.dataset.modal);
+                    var forms = document.getElementsByClassName("forms");
+
+                    for (var j = 0; j < forms.length; j++) {
+                        forms[j].reset();
                     }
-                    
+
                     modal.style.display = "none";
                 };
             }
-
-            // Close the Modal
-            // var closeTriggers = document.getElementsByClassName("close-modal");
-
-            // for(var i = 0; i < closeTriggers.length; i++) {
-            //     var currentCloseTrigger = closeTriggers[i];
-
-            //     currentCloseTrigger.onclick = function() { 
-            //         var modal = document.getElementById(currentCloseTrigger.dataset.modal);
-            //         modal.style.display = "none";
-            //     };
-            // }
 
             // // When the user clicks anywhere outside of the modal, close it
             // window.onclick = function(event) {

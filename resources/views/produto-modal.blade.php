@@ -9,14 +9,14 @@
       </h3>
     </header>
     <main class="produto-add-modal-main">
-      <form id="add-secao-form" action="{{ route('produtos.store') }}" method="POST" enctype="multipart/form-data">
+      <form class="forms" id="produto-form-add" action="{{ route('produtos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
          <div class="form-container">
           <div class="form-body">
             <div class="form-group">
               <strong>Nome:</strong>
-              <input type="text" name="nome" class="form-control" placeholder="Nome">
+              <input type="text" name="nome" class="form-control input-custom" placeholder="Nome">
             </div>
             <div class="form-group">
               <strong>Descrição:</strong>
@@ -25,19 +25,19 @@
             <div class="form-group">
               <strong>Categoria:</strong>
               <select id="add-produto-form-select" name="categoria_id" class="form-control">
-                <option value="1" selected="teste">1</option>                  
+                {{-- <option value="1" selected="teste">1</option>                   --}}
                 
-                {{-- @foreach ($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" selected="||z||">{{ $categoria->nome }}</option>
-                @endforeach --}}
+                @foreach ($categorias as $categoria)
+                  <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                @endforeach
               </select>
             </div>
             <div class="form-group modal-foto-title">
               <strong>Foto:</strong>
             </div>            
             <div class="form-group">
-              <label for="selecao-arquivo"><strong>Selecionar &#187;</strong></label>
-              <input id="selecao-arquivo" type="file" name="foto" class="form-control input-img" accept="image/*">
+              <label class="label-selecao-arquivo" for="selecao-arquivo"><strong>Selecionar &#187;</strong></label>
+              <input id="selecao-arquivo" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
             </div>
           </div>
           <div class="form-footer">
@@ -62,35 +62,35 @@
       </h3>
     </header>
     <main class="produto-edit-modal-main">
-      <form id="add-secao-form" action="{{ route('produtos.update', '1') }}" method="POST">
+      <form class="forms" id="produto-form-edit" action="{{ route('produtos.update', '1') }}" method="POST">
         @csrf
+        @method('PUT')
 
          <div class="form-container">
           <div class="form-body">
             <div class="form-group">
               <strong>Nome:</strong>
-              <input type="text" name="nome" class="form-control" placeholder="Nome">
+              <input id="produto-edit-nome" type="text" name="nome" class="form-control input-custom" placeholder="Nome">
             </div>
             <div class="form-group">
               <strong>Descrição:</strong>
-              <textarea class="form-control" name="descricao" rows="3" placeholder="Descrição do produto..."></textarea>
+              <textarea id="produto-edit-descricao" class="form-control" name="descricao" rows="3" placeholder="Descrição do produto..."></textarea>
             </div>
             <div class="form-group">
               <strong>Categoria:</strong>
-              <select id="edit-produto-form-select" name="categoria_id" class="form-control">
-                <option value="teste" selected="teste">Teste</option>                  
-                
-                {{-- @foreach ($categorias as $categoria)
-                  <option value="{{ $categoria->id }}" selected="||z||">{{ $categoria->nome }}</option>
-                @endforeach --}}
+              <select id="produto-edit-categoria" {{-- id="edit-produto-form-select" --}} name="categoria_id" class="form-control">
+                {{-- <option value="teste" selected="teste">Teste</option> --}}                
+                @foreach ($categorias as $categoria)
+                  <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                @endforeach
               </select>
             </div>
             <div class="form-group modal-foto-title">
               <strong>Foto:</strong>
             </div>            
             <div class="form-group">
-              <label for="selecao-arquivo"><strong>Selecionar &#187;</strong></label>
-              <input id="selecao-arquivo" type="file" name="foto" class="form-control input-img" accept="image/*">
+              <label class="label-selecao-arquivo" for="produto-edit-categoria"><strong>Selecionar &#187;</strong></label>
+              <input id="produto-edit-categoria" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
             </div>
           </div>
           <div class="form-footer">
@@ -115,8 +115,9 @@
       </h3>
     </header>
     <main class="produto-edit-modal-main">
-      <form id="add-secao-form" action="{{ route('produtos.destroy', '1') }}" method="DELETE">
+      <form id="produto-form-delete" action="{{ route('produtos.destroy', '1') }}" method="POST">
         @csrf
+        @method('DELETE')
 
          <div class="form-container">
           <div class="form-body">

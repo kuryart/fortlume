@@ -13,15 +13,9 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Painel') }}
-                    </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('categorias-admin') }}" :active="request()->routeIs('categorias-admin')">
-                        {{ __('Categorias') }}
-                    </x-jet-nav-link>                    
-                    <x-jet-nav-link href="{{ route('produtos-admin') }}" :active="request()->routeIs('produtos-admin')">
                         {{ __('Produtos') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('obras-admin') }}" :active="request()->routeIs('obras-admin')">
+                    <x-jet-nav-link href="{{ route('dashboard.obras') }}" :active="request()->routeIs('obras-admin')">
                         {{ __('Obras') }}
                     </x-jet-nav-link>                    
                 </div>

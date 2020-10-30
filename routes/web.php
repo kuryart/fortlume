@@ -19,19 +19,24 @@ Route::get('/', function () {
 });
 
 // === DASHBOARD ===
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 
+    'NavigationController@dashboardProdutos')->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-obras', 
+    'NavigationController@dashboardObras')->name('dashboard.obras');    
 
 // === CATEGORIAS ===
 // Index Admin
 Route::middleware(['auth:sanctum', 'verified'])->get('/categorias-admin', 
     'CategoriaController@indexAdmin')->name('categorias-admin');
 // Store    
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorias', 
+Route::middleware(['auth:sanctum', 'verified'])->post('/categorias', 
     'CategoriaController@store')->name('categorias.store');
 // Update
-Route::middleware(['auth:sanctum', 'verified'])->get('/categorias/{categoria}', 
+Route::middleware(['auth:sanctum', 'verified'])->put('/categorias/{categoria}', 
     'CategoriaController@update')->name('categorias.update');
 // Delete
 Route::middleware(['auth:sanctum', 'verified'])->delete('/categorias/{categoria}', 
@@ -56,10 +61,10 @@ Route::middleware(['auth:sanctum', 'verified'])->delete('/produtos/{produto}',
 Route::middleware(['auth:sanctum', 'verified'])->get('/obras-admin', 
     'ObraController@indexAdmin')->name('obras-admin');
 // Store    
-Route::middleware(['auth:sanctum', 'verified'])->get('/obras', 
+Route::middleware(['auth:sanctum', 'verified'])->post('/obras', 
     'ObraController@store')->name('obras.store');
 // Update
-Route::middleware(['auth:sanctum', 'verified'])->get('/obras/{obra}', 
+Route::middleware(['auth:sanctum', 'verified'])->put('/obras/{obra}', 
     'ObraController@update')->name('obras.update');
 // Delete
 Route::middleware(['auth:sanctum', 'verified'])->delete('/obras/{obra}', 
