@@ -26,7 +26,7 @@ class CategoriaController extends Controller
 
     public function getByIndex(int $index)
     {
-        return Categoria::where('id', index);
+        return Categoria::where('id', $index);
     }
 
     public function getByColumn($column, $value)

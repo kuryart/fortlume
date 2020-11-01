@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// === HOME ===
-Route::get('/', function () {
-    return view('index.index');
-});
+// === NAVIGATION ===
+Route::get('/', 'NavigationController@home')->name('home');
+Route::get('/produtos-view', 'NavigationController@produtos')->name('produtos.view');
+Route::get('/obras-view', 'NavigationController@obras')->name('obras.view');
 
 // === DASHBOARD ===
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -32,6 +32,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-obras',
 // Index Admin
 Route::middleware(['auth:sanctum', 'verified'])->get('/categorias-admin', 
     'CategoriaController@indexAdmin')->name('categorias-admin');
+// Get by Index
+Route::get('/categorias/{categoria}', 
+    'CategoriaController@getByIndex')->name('categorias.getByIndex');
 // Store    
 Route::middleware(['auth:sanctum', 'verified'])->post('/categorias', 
     'CategoriaController@store')->name('categorias.store');

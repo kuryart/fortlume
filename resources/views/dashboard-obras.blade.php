@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-     
+            <button data-modal="obra-modal-add" class="btn-add-things open-modal">
+                <i class="fas fa-plus add-icon"></i>
+                OBRAS
+            </button>
         </h2>
     </x-slot>
 

@@ -9,7 +9,7 @@
             <button data-modal="produto-modal-add" class="btn-add-things open-modal">
                 <i class="fas fa-plus add-icon"></i>
                 PRODUTO
-            </button>            
+            </button>
         </h2>
     </x-slot>
 
@@ -26,12 +26,12 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="bg-white overflow-hidden sm:rounded-lg main-main">
                 <ul id="categoria-ul">
                     @foreach ($categorias as $categoria)
                         <li class="categoria-main">
                             <details open>
-                                <summary>                                
+                                <summary>
                                     {{ $categoria->nome }}
                                     <button class="open-modal categoria-btn-edit" data-modal="categoria-modal-edit" data-categoriaId="{{ $categoria->id }}">
                                         <i class="fas fa-edit"></i>
@@ -46,6 +46,7 @@
                                             @if ($produto->categoria_id === $categoria->id)
                                                 <div class="produto-main">
                                                     <img class="produto-img" src="{{ asset($produto->foto_url) }}" style="width:100%">
+
                                                     <h5 class="produto-title">{{ $produto->nome }}</h5>
                                                     <p class="produto-description">{{ $produto->descricao }}</p>                                    
                                                     <div class="produto-footer">

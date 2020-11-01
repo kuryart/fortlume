@@ -57,7 +57,7 @@
        <div class="produtos-list">
           <div class="produto">
              <div class="produto-img-container">
-                <img class="produto-img" src="{{ asset('img/produto1.jpg') }}" alt="#" />
+                <img id="myImg" class="produto-img" src="{{ asset('img/produto1.jpg') }}" alt="#" />
                 <div class="overlay">
                    <div class="produto-overlay-text">
                       <i class="fas fa-search-plus"></i>

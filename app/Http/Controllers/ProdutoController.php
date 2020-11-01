@@ -36,9 +36,7 @@ class ProdutoController extends Controller
     }
 
     public function store(Request $request)
-    {
-        Log::debug("entrou");
-        
+    {                
         $request->validate([
             'nome' => 'required|max:150',
             'descricao' => 'required|max:700',
@@ -51,8 +49,9 @@ class ProdutoController extends Controller
         $imageName = time().'.'.$imageExtension;
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
-        // $imageUrl = '/storage/'.$imageStorePath;
-        $imageUrl = $imageStorePath;
+        $imageUrl = '/storage/'.$imageStorePath;
+        
+        // $imageUrl = $imageStorePath;
 
         $produto = Produto::create([
           'nome' => $request->nome,
@@ -72,7 +71,7 @@ class ProdutoController extends Controller
             'nome' => 'required|max:150',
             'descricao' => 'required|max:700',
             'categoria_id' => 'required',
-            'foto' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
 
         // Armazena imagem
@@ -80,9 +79,9 @@ class ProdutoController extends Controller
         $imageName = time().'.'.$imageExtension;
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
-        // $imageUrl = '/storage/'.$imageStorePath;
+        $imageUrl = '/storage/'.$imageStorePath;
         
-        $imageUrl = $imageStorePath;
+        // $imageUrl = $imageStorePath;
 
         $produto->update([
             'nome' => $request->nome,

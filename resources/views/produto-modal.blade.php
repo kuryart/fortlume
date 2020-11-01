@@ -25,8 +25,6 @@
             <div class="form-group">
               <strong>Categoria:</strong>
               <select id="add-produto-form-select" name="categoria_id" class="form-control">
-                {{-- <option value="1" selected="teste">1</option>                   --}}
-                
                 @foreach ($categorias as $categoria)
                   <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                 @endforeach
@@ -36,8 +34,8 @@
               <strong>Foto:</strong>
             </div>            
             <div class="form-group">
-              <label class="label-selecao-arquivo" for="selecao-arquivo"><strong>Selecionar &#187;</strong></label>
-              <input id="selecao-arquivo" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+              <label class="label-selecao-arquivo" for="produto-add-img"><strong>Selecionar &#187;</strong></label>
+              <input id="produto-add-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
             </div>
           </div>
           <div class="form-footer">
@@ -62,7 +60,7 @@
       </h3>
     </header>
     <main class="produto-edit-modal-main">
-      <form class="forms" id="produto-form-edit" action="{{ route('produtos.update', '1') }}" method="POST">
+      <form class="forms" id="produto-form-edit" action="{{ route('produtos.update', '1') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -78,8 +76,7 @@
             </div>
             <div class="form-group">
               <strong>Categoria:</strong>
-              <select id="produto-edit-categoria" {{-- id="edit-produto-form-select" --}} name="categoria_id" class="form-control">
-                {{-- <option value="teste" selected="teste">Teste</option> --}}                
+              <select id="edit-produto-form-select" name="categoria_id" class="form-control">
                 @foreach ($categorias as $categoria)
                   <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                 @endforeach
@@ -89,8 +86,8 @@
               <strong>Foto:</strong>
             </div>            
             <div class="form-group">
-              <label class="label-selecao-arquivo" for="produto-edit-categoria"><strong>Selecionar &#187;</strong></label>
-              <input id="produto-edit-categoria" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+              <label class="label-selecao-arquivo" for="produto-edit-img"><strong>Selecionar &#187;</strong></label>
+              <input id="produto-edit-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
             </div>
           </div>
           <div class="form-footer">
