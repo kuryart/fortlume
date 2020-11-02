@@ -125,6 +125,29 @@ p {
     transition: all 0.4s ease 0s;
 }
 
+.contact-form form input[type="send"] {
+  color: #fff !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #60a3bc;
+  padding: 20px;
+  border-radius: 50px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  cursor: pointer;    
+
+}
+
+.contact-form form input[type="send"]:hover,
+.contact-form form input[type="send"]:focus {
+   text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.4s ease 0s;
+}
+
 /* media queries */
 
 @media (max-width: 1200px) {
@@ -262,6 +285,9 @@ p {
       float: right;
       display: block;
     }
+
+    .nav-bottom .dropdown {display: none;}
+
 }
   
 @media screen and (max-width: 900px) {
@@ -276,6 +302,12 @@ p {
         display: block;
         text-align: left;
     }
+
+    .nav-bottom.responsive .dropdown {
+      float: none;
+      display: block;
+      text-align: left;
+  }    
 }
 
 /* Slideshow container */
@@ -694,3 +726,8 @@ p {
   .dropdown:hover .dropbtn {
     background-color: #1f5a76;
   }      
+
+.icon-top {
+  font-size: 13px;
+  color: #4fcaff;
+}  

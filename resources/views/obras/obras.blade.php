@@ -9,13 +9,13 @@
       </h1>
 
       <div class="obras-gallery-container">
-         <div class="grid">
+         <div class="grid-obras">
             @foreach ($obras as $obra)
-               <div class="obra-main zoom">
-                  <img id="img-{{ $obra->id }}" class="obra-img" src="{{ asset($obra->foto_url) }}" alt="{{ $obra->nome }}" style="width:100%">
-               </div>
+                <video class="obra-video" controls>
+                   <source src="{{ asset($obra->video_url) }}" type="video/mp4">
+                 </video>     
             @endforeach
-         </div>
+        </div>
       </div>
    </main>
 

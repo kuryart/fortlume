@@ -65,14 +65,21 @@
         <script>
             function findByAttributeInParent(el, attr) {        
                 if (el.hasAttribute(attr)) {
+                    console.log(el);
+                    console.log(attr);
+                    console.log(el.dataset.modal);
                     return document.getElementById(el.dataset.modal);
                 }
 
                 while (el.parentNode) { 
                     el = el.parentNode;
                     if (el.hasAttribute(attr))
+                        console.log(el);
+                        console.log(attr);
                         return document.getElementById(el.dataset.modal);
                 }
+                console.log(el);
+                console.log(attr);
                 return null;
             }
 
@@ -98,6 +105,7 @@
 
                 currentOpenTrigger.onclick = function(event) { 
                     var modal = findByAttributeInParent(event.target, "data-modal");
+                    console.log(modal);
 
                     if (modal.id === "categoria-modal-edit") {
                         var form = document.getElementById("categoria-form-edit");

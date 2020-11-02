@@ -26,8 +26,7 @@
       <span class="dot" onclick="currentSlide(1)"></span> 
       <span class="dot" onclick="currentSlide(2)"></span> 
       <span class="dot" onclick="currentSlide(3)"></span> 
-    </div>        
-
+    </div>
  </div>
 
  <div id="quem-somos" class="about_section layout_padding">
@@ -137,12 +136,10 @@
           <h4>ORÇAMENTO</h4>
           <h3 class="white_font" style="text-transform: none !important">Solicite um orçamento personalizado</h3>
           <div class="contact-form">
-             <form>
-                <input type="text" placeholder="Nome" />
-                <input type="email" placeholder="Email" />
-                <input type="text" placeholder="Telefone" />
-                <input type="text" placeholder="Assunto">
-                <textarea placeholder="Mensagem"></textarea>
+             <form action="mailto:kuryart1@gmail.com" method="post" enctype="text/plain">
+                <input type="text" name="name" placeholder="Nome" />
+                <input type="email" name="mail" placeholder="Email" />
+                <textarea name="comment" placeholder="Mensagem"></textarea>
 
                 <div class="produto-btn-wrapper">
                    <input type="submit" value="ENVIAR">
@@ -211,20 +208,20 @@
               </li>                  
               <h2 class="nav__title">Telefones</h2>
               <li>                     
-                 <a href="#">
+                 <a href="tel:551433067886">
                     <i class="fas fa-phone"></i>
                     (14) 3306-7886
                  </a>                     
               </li>                  
               <li>
-                 <a href="#">
+                 <a href="https://wa.me/5514981961060">
                     <i class="fab fa-whatsapp"></i>
                     (14) 99803-2135
                  </a>
               </li>
               <h2 class="nav__title">Email</h2>
               <li>                     
-                 <a href="#">
+                 <a href="mailto:fortlume@gmail.com">
                     <i class="fas fa-envelope"></i>
                     fortlume@gmail.com
                  </a>                     

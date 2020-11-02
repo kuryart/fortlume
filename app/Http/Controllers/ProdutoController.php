@@ -37,6 +37,10 @@ class ProdutoController extends Controller
 
     public function store(Request $request)
     {                
+
+        $foto=$request->file('foto');
+        dd($foto);
+
         $request->validate([
             'nome' => 'required|max:150',
             'descricao' => 'required|max:700',

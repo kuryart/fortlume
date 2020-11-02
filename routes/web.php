@@ -19,10 +19,6 @@ Route::get('/produtos-view', 'NavigationController@produtos')->name('produtos.vi
 Route::get('/obras-view', 'NavigationController@obras')->name('obras.view');
 
 // === DASHBOARD ===
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 
     'NavigationController@dashboardProdutos')->name('dashboard');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-obras', 

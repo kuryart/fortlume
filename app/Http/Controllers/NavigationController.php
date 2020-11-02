@@ -46,6 +46,6 @@ class NavigationController extends Controller
     public function dashboardObras()
     {
         $obras = Obra::all();
-        return view('dashboard-obras')->with('obras');
+        return view('dashboard-obras')->with(compact('obras'));
     }
 }

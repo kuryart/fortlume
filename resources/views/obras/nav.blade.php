@@ -14,9 +14,8 @@
             </a>
          </div>
          <div class="nav-bottom" id="nav-bottom">
-            <a href="#home">Home</a>
-            <a href="#quem-somos">Quem Somos</a>
-            <a href="#produtos">Produtos</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('home') }}/#quem-somos">Quem Somos</a>
 
             <div class="dropdown">
                <button onclick="document.location='{{ route('produtos.view') }}'" class="dropbtn">Produtos</button>
@@ -27,9 +26,9 @@
                </div>
             </div>
 
-            <a href="#obras">Obras</a>
-            <a href="#orcamento">Orçamentos</a>
-            <a href="#contato">Contato</a>
+            <a href="{{ route('obras.view') }}">Obras</a>
+            <a href="{{ route('home') }}/#orcamento">Orçamentos</a>
+            <a href="{{ route('home') }}/#contato">Contato</a>
             <a href="javascript:void(0);" class="icon" onclick="collapseMenu()">
                <i class="fa fa-bars"></i>
              </a>                  
