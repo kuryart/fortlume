@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         if(env('FORCE_HTTPS',true)) { // Default value should be false for local server
-            URL::forceSchema('https');
+            URL::forceScheme('https');
         }        
     }
 }
