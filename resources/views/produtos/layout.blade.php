@@ -4,7 +4,7 @@
     @include('produtos.head')
   </head>
   <body>
-    @include('produtos.nav')
+    @include('index.nav')
     @yield('content')
     @include('produtos.scripts')
   </body>

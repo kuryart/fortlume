@@ -4,7 +4,7 @@
     @include('obras.head')
   </head>
   <body>
-    @include('obras.nav')
+    @include('index.nav')
     @yield('content')
     @include('obras.scripts')
   </body>

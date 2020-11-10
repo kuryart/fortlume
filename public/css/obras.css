@@ -40,6 +40,7 @@
 
 .main-container {
   margin: 0 0 0 0;
+  background-color: #fff;
 }
 
 .main-title {
@@ -185,7 +186,8 @@
   font-family: 'Bebas Neue', cursive;
   font-weight: bold;
   letter-spacing: 6px;
-  margin: 3rem 0 1.5rem 0;
+  margin: 0 0 1.5rem 0;
+  padding: 3rem 0 0 0;
   /* color: #1f5a76; */
   /* color: #80b5c2; */
   color: #1f5a76;  
@@ -206,3 +208,8 @@
   line-height: 1em;
   color: #1f5a76;
 }
+
+.obra-video {
+  margin: 0 0 4rem 0;
+}
+

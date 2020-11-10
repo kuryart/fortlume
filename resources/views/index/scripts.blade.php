@@ -10,20 +10,57 @@
 </script>
 
 <script>
-  var slideIndex = 0;
-  showSlides();
+   var timeoutHandle;
+   var slideIndex = 0;
+   var slides = document.getElementsByClassName("mySlides");
+   var dots = document.getElementsByClassName("dot");
 
-  function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  for (i = 0; i < slides.length; i++) {
-     slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}
-  slides[slideIndex-1].style.display = "block";
-  setTimeout(showSlides, 8000); // Change image every 8 seconds
-  }     
+   showSlide(slideIndex);
+   startTimer();
+
+   // Exibe slide
+   function showSlide(n) {
+      if (n >= slides.length) {
+         slideIndex = 0;
+      } else if (n < 0) {
+         slideIndex = slides.length - 1;
+      } else {
+         slideIndex = n;
+      }
+      for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex].style.display = "block";
+      dots[slideIndex].className += " active";      
+   }
+
+   // Inicia contagem
+   function startTimer() {
+      timeoutHandle = setInterval(function(){ showSlide(slideIndex += 1); }, 8000);
+   }
+
+   // Para contagem
+   function stopTimer() {
+      clearInterval(timeoutHandle);
+   }
+
+   // Passa o slide
+   function plusSlide(n) {
+      stopTimer();
+      showSlide(slideIndex += n);
+      startTimer()
+   }
+
+   // Mostra slide no index
+   function currentSlide(n) {
+      stopTimer();
+      showSlide(n);
+      startTimer()
+   }
+
 </script>
 
 <script>
@@ -49,24 +86,29 @@
 </script>
 
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
+   var splide = new Splide( '#splide', {
+      type        : 'loop',
+		fixedWidth  : 300,
+		height      : 180,
+		gap         : 10,
+		cover       : true,
+		focus       : 'center',
+      pagination  : false,
+		breakpoints : {
+			'600': {
+				fixedWidth: 150,
+				height    : 90,
+			}
+		},
+	} ).mount();
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('myImg');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-modal.style.display = "block";
-modalImg.src = this.src;
-captionText.innerHTML = this.alt;
-}
+   splide.on( 'click', function() {
+      window.location = "http://www.google.com/";
+   } );
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+   var splideObras = new Splide( '#splide-obras', {
+      pagination  : false,
+      rewind      : true,
+   } ).mount();
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
-modal.style.display = "none";
-}
 </script>

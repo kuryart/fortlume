@@ -2,7 +2,7 @@
 
    <div class="nav-main">
       <div class="nav-left">
-         <a href="#"><img src="{{ asset('img/logo-fortlume.png') }}"/></a>
+         <a href="{{ route('home') }}"><img src="{{ asset('img/logo-fortlume.png') }}"/></a>
       </div>
       <div class="nav-right">
          <div class="nav-top">
