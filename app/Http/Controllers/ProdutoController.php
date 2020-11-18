@@ -38,8 +38,6 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {                
         $request->validate([
-            'nome' => 'required|max:150',
-            'descricao' => 'required|max:700',
             'categoria_id' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
@@ -54,22 +52,18 @@ class ProdutoController extends Controller
         // $imageUrl = $imageStorePath;
 
         $produto = Produto::create([
-          'nome' => $request->nome,
-          'descricao' => $request->descricao,
           'categoria_id' => $request->categoria_id,
           'foto_url' => $imageUrl,
         ]);
 
         // toastr()->success('Produto criado com sucesso.');
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.produtos');
     }
 
     public function update(Request $request, Produto $produto)
     {
         $request->validate([
-            'nome' => 'required|max:150',
-            'descricao' => 'required|max:700',
             'categoria_id' => 'required',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
@@ -84,14 +78,12 @@ class ProdutoController extends Controller
         // $imageUrl = $imageStorePath;
 
         $produto->update([
-            'nome' => $request->nome,
-            'descricao' => $request->descricao,
             'categoria_id' => $request->categoria_id,
             'foto_url' => $imageUrl,
         ]);
 
         // toastr()->success('Produto atualizado com sucesso.');
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.produtos');
     }
 
     public function destroy(Produto $produto)
@@ -99,6 +91,6 @@ class ProdutoController extends Controller
         $produto->delete();
 
         // toastr()->success('Produto excluído com sucesso.');
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.produtos');
     }
 }

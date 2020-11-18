@@ -15,14 +15,6 @@
          <div class="form-container">
           <div class="form-body">
             <div class="form-group">
-              <strong>Nome:</strong>
-              <input type="text" name="nome" class="form-control input-custom" placeholder="Nome">
-            </div>
-            <div class="form-group">
-              <strong>Descrição:</strong>
-              <textarea class="form-control" name="descricao" rows="3" placeholder="Descrição do produto..."></textarea>
-            </div>
-            <div class="form-group">
               <strong>Categoria:</strong>
               <select id="add-produto-form-select" name="categoria_id" class="form-control">
                 @foreach ($categorias as $categoria)
@@ -66,14 +58,6 @@
 
          <div class="form-container">
           <div class="form-body">
-            <div class="form-group">
-              <strong>Nome:</strong>
-              <input id="produto-edit-nome" type="text" name="nome" class="form-control input-custom" placeholder="Nome">
-            </div>
-            <div class="form-group">
-              <strong>Descrição:</strong>
-              <textarea id="produto-edit-descricao" class="form-control" name="descricao" rows="3" placeholder="Descrição do produto..."></textarea>
-            </div>
             <div class="form-group">
               <strong>Categoria:</strong>
               <select id="edit-produto-form-select" name="categoria_id" class="form-control">

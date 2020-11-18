@@ -2,7 +2,7 @@
 
    <div class="nav-main">
       <div class="nav-left">
-         <a href="{{ route('home') }}"><img src="{{ asset('img/logo-fortlume.png') }}"/></a>
+         <a href="{{ route('home') }}"><img src="{{ asset('img/logo-fort.png') }}"/></a>
       </div>
       <div class="nav-right">
          <div class="nav-top">
@@ -25,7 +25,7 @@
                <button onclick="document.location='{{ route('produtos.view') }}'" class="dropbtn">Produtos</button>
                <div class="dropdown-content">
                   @foreach ($categorias as $categoria)
-                     <a href="{{ route('categorias.getByIndex', $categoria->id) }}">{{ $categoria->nome }}</a>
+                     <a href="{{ route('produto', $categoria) }}">{{ $categoria->nome }}</a>
                   @endforeach
                </div>
             </div>

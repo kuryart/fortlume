@@ -218,6 +218,5 @@
             if (lbclose) lbclose.addEventListener("click", closeLightbox);
             });            
         </script>
-
     </body>
 </html>

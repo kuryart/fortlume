@@ -18,7 +18,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    /* width: 100%; */
 }
 
 .nav-right{
@@ -126,8 +126,8 @@
     background-color: #1f5a76;
     color: #fff;
 }
-
-@media screen and (max-width: 900px) {
+  
+@media screen and (max-width: 1088px) {
     .nav-bottom a {display: none;}
     .nav-bottom a.icon {
       float: right;
@@ -136,9 +136,10 @@
 
     .nav-bottom .dropdown {display: none;}
 
-}
-  
-@media screen and (max-width: 900px) {
+    .nav-left {
+        margin-top: 5vh;
+    }
+
     .nav-bottom.responsive {position: relative;}
     .nav-bottom.responsive .icon {
         position: absolute;
@@ -156,6 +157,12 @@
       display: block;
       text-align: left;
   }    
+}
+
+@media screen and (max-width: 600px) {
+    .nav-left img {
+        width: 200px;
+    }
 }
 
 @media (max-width: 360px) {

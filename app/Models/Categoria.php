@@ -11,6 +11,7 @@ class Categoria extends Model
 
     protected $fillable = [
       'nome',
+      'foto_url',
   ];
 
     public function produtos()

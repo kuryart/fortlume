@@ -15,10 +15,10 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
-            $table->string('nome', 150);
-            $table->string('descricao', 700);
+            // $table->string('nome', 150);
+            // $table->string('descricao', 700);
             $table->foreignId('categoria_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->string('foto_url');            
+            $table->string('foto_url');
             $table->timestamps();
         });
     }

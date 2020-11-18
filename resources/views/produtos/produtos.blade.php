@@ -9,22 +9,23 @@
          </span>
       </h1>
 
-      @foreach ($categorias as $categoria)      
-         <div class="produtos-gallery-container">         
-            <div class="categoria-title-container">
-               <h1 class="categoria-title">&#xBB; {{ $categoria->nome }}</h3>
-            </div>
-            <div class="grid">
-               @foreach ($produtos as $produto)
-                  @if ($produto->categoria_id === $categoria->id)
-                     <div class="produto-main zoom">
-                        <img id="img-{{ $produto->id }}" class="produto-img" src="{{ asset($produto->foto_url) }}" alt="{{ $produto->nome }}" style="width:100%">
-                     </div>                      
-                  @endif
-               @endforeach
-            </div>
+      <div class="container">
+         <div class="gallery">
+            @foreach ($categorias as $categoria)
+               <div class="gallery-item" tabindex="0">
+                  <a href="{{ route('produto', $categoria) }}">
+                     <img src="{{ asset($categoria->foto_url) }}" class="gallery-image" alt="">
+                     <p class="gallery-text">{{ $categoria->nome }}</p>
+                     <div class="gallery-item-info">
+                        <ul>
+                           <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></li>
+                        </ul>
+                     </div>
+                  </a>
+               </div>                
+            @endforeach
          </div>
-      @endforeach  
+      </div>
    </main>
 
    <footer id="contato" class="footer">            

@@ -71,7 +71,7 @@ modal.style.display = "none";
 }
 </script> --}}
 
-<script>
+{{-- <script>
    // Helper functions
    let qs = (selector, context = document) => context.querySelector(selector);
    let qsa = (selector, context = document) =>
@@ -109,9 +109,9 @@ modal.style.display = "none";
    const lbclose = qs(".lightbox .close");
    if (lbclose) lbclose.addEventListener("click", closeLightbox);
    });   
-</script>
+</script> --}}
 
-<script>
+{{-- <script>
    var modal = document.getElementById("produto-modal");
    var openTriggers = document.getElementsByClassName("produto-img");
 
@@ -136,7 +136,7 @@ modal.style.display = "none";
    span.onclick = function() { 
      modal.style.display = "none";
    }
-</script>
+</script> --}}
 
 <script>
    // Wrap every letter in a span
@@ -156,7 +156,7 @@ modal.style.display = "none";
    });   
 </script>
 
-<script>
+{{-- <script>
    var gallery = document.querySelector('#gallery');
    var getVal = function (elem, style) { return parseInt(window.getComputedStyle(elem).getPropertyValue(style)); };
    var getHeight = function (item) { return item.querySelector('.content').getBoundingClientRect().height; };
@@ -189,4 +189,36 @@ modal.style.display = "none";
          item.classList.toggle('full');        
       });
    });
+</script> --}}
+
+<script>
+   function openModal() {
+     document.getElementById("myModal").style.display = "block";
+   }
+   
+   function closeModal() {
+     document.getElementById("myModal").style.display = "none";
+   }
+   
+   var slideIndex = 1;
+   showSlides(slideIndex);
+   
+   function plusSlides(n) {
+     showSlides(slideIndex += n);
+   }
+   
+   function currentSlide(n) {
+     showSlides(slideIndex = n);
+   }
+   
+   function showSlides(n) {
+     var i;
+     var slides = document.getElementsByClassName("mySlides");
+     if (n > slides.length) {slideIndex = 1}
+     if (n < 1) {slideIndex = slides.length}
+     for (i = 0; i < slides.length; i++) {
+         slides[i].style.display = "none";
+     }
+     slides[slideIndex-1].style.display = "block";
+   }
 </script>

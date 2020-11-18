@@ -38,10 +38,19 @@ class CategoriaController extends Controller
     {
         $request->validate([
             'nome' => 'required|max:150',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
+
+        // Armazena imagem
+        $imageExtension = $request->foto->extension();
+        $imageName = time().'.'.$imageExtension;
+        $imagePath = 'img/categorias';
+        $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
+        $imageUrl = '/storage/'.$imageStorePath;
 
         $categoria = Categoria::create([
           'nome' => $request->nome,
+          'foto_url' => $imageUrl,
         ]);
 
         // toastr()->success('Produto criado com sucesso.');
@@ -53,10 +62,19 @@ class CategoriaController extends Controller
     {
         $request->validate([
           'nome' => 'required|max:150',
+          'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
+
+        // Armazena imagem
+        $imageExtension = $request->foto->extension();
+        $imageName = time().'.'.$imageExtension;
+        $imagePath = 'img/produtos';
+        $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
+        $imageUrl = '/storage/'.$imageStorePath;
 
         $categoria->update([
           'nome' => $request->nome,
+          'foto_url' => $imageUrl,
         ]);
 
         // toastr()->success('Produto atualizado com sucesso.');

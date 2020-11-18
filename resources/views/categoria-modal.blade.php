@@ -19,6 +19,13 @@
               <input type="text" name="nome" class="form-control input-custom" placeholder="Nome">
             </div>
           </div>
+          <div class="form-group modal-foto-title">
+            <strong>Foto:</strong>
+          </div>            
+          <div class="form-group">
+            <label class="label-selecao-arquivo" for="produto-add-img"><strong>Selecionar &#187;</strong></label>
+            <input id="produto-add-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+          </div>          
           <div class="form-footer">
             <button type="submit" class="btn-save">Salvar</button>
             <button type="button" data-modal="categoria-modal-add" class="close-modal btn-cancel">Cancelar</button>
@@ -41,7 +48,7 @@
       </h3>
     </header>
     <main class="categoria-edit-modal-main">
-      <form class="forms" id="categoria-form-edit" action="{{ route('categorias.update', '1') }}" method="POST">
+      <form class="forms" id="categoria-form-edit" action="{{ route('categorias.update', '1') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -51,6 +58,13 @@
               <strong>Nome:</strong>
               <input id="categoria-nome-input" type="text" name="nome" value="" class="form-control input-custom" placeholder="Nome">
             </div>
+          </div>
+          <div class="form-group modal-foto-title">
+            <strong>Foto:</strong>
+          </div>            
+          <div class="form-group">
+            <label class="label-selecao-arquivo" for="produto-edit-img"><strong>Selecionar &#187;</strong></label>
+            <input id="produto-edit-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
           </div>
           <div class="form-footer">
             <button type="submit" class="btn-save">Salvar</button>

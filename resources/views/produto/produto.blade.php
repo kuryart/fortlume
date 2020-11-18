@@ -1,23 +1,47 @@
-@extends('obras.layout')
+@extends('produto.layout')
 
 @section('content')
-   <main class="main-container"> 
+   <main class="main-container">  
+ 
       <h1 class="ml7">
          <span class="text-wrapper">
-           <span class="letters">- Obras -</span>
+         <span class="letters">{{ $categoriaFinal->nome }}</span>
          </span>
       </h1>
 
-      <div class="obras-gallery-container">
-         <div class="grid-obras">
-            @foreach ($obras as $obra)
-                <video class="obra-video" controls>
-                   <source src="{{ asset($obra->video_url) }}" type="video/mp4">
-                 </video>     
-            @endforeach
-        </div>
+      <div class="container">
+         <div class="gallery">
+            @for ($i = 0; $i < $produtos->count(); $i++)
+               <div class="gallery-item" onclick="openModal();currentSlide({{ $i + 1 }})" tabindex="0">
+                  <img src="{{ asset($produtos->slice($i, 1)->first()->foto_url) }}" class="gallery-image" alt="">
+                  <div class="gallery-item-info">
+                     <ul>
+                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></li>
+                     </ul>
+                  </div>
+               </div>
+            @endfor
+         </div>
       </div>
 
+      <div id="myModal" class="modal">
+         <span class="close cursor" onclick="closeModal()">&times;</span>
+         <div class="modal-content">
+       
+            @for ($i = 0; $i < $produtos->count(); $i++)
+               <div class="mySlides">
+                  <div class="numbertext">{{ $i + 1 }} / {{ $produtos->count() }}</div>                  
+                  {{-- <div class="img-lightbox-container"> --}}
+                     <img src="{{ asset($produtos->slice($i, 1)->first()->foto_url) }}" class="img-lightbox">
+                  {{-- </div> --}}
+
+               </div>
+            @endfor
+            
+         </div>
+         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+         <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div> 
    </main>
 
    <footer id="contato" class="footer">            
@@ -99,12 +123,12 @@
       <div class="legal">
          <p>&copy; 2020 Fortlume. Todos os direitos reservados. | Desenvolvido por Cury Dev Soluções.</p>
       </div>
-    </footer>  
+    </footer>
 
       <!-- The Modal -->
-      <div id="obra-modal" class="modal">
+      <div id="produto-modal" class="modal">
          <span class="close">&times;</span>
-         <img class="modal-content" id="obra-modal-img">
+         <img class="modal-content" id="produto-modal-img">
          <div id="caption"></div>
       </div>
 

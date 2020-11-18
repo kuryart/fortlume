@@ -87,11 +87,10 @@
           </div>
        </div>
        <div class="about-right">
-          <img class="img-responsive" src="{{ asset('img/f-slide-3.jpg') }}" alt="#" />
+          <img class="img-responsive2" src="{{ asset('img/f-slide-3.jpg') }}" alt="#" />
           <p class="quem-somos-legenda">Um visual bonito e seguro, para o ambiente desejado</p>
        </div>
     </div>
-
  </div>
 
  <div id="produtos" class="about_section layout_padding" style="background: #fff;">
@@ -100,75 +99,18 @@
           <h4>PRODUTOS</h4>
           <h3 class="" style="text-transform: none !important">Produtos de alta qualidade</h3>
        </div>
-       
-       {{-- <div class="produtos-list">
-          <div class="produto">
-             <div class="produto-img-container">
-                <img id="myImg" class="produto-img" src="{{ asset('img/produto1.jpg') }}" alt="#" />
-                <div class="overlay">
-                   <div class="produto-overlay-text">
-                      <i class="fas fa-search-plus"></i>
-                   </div>
-                 </div>
-             </div>                  
-             <p class="white_font produto-title">PORTAS</p>                  
-          </div>
-          <div class="produto">
-             <div class="produto-img-container">
-                <img class="produto-img" src="{{ asset('img/produto2.jpg') }}" alt="#" />
-                <div class="overlay">
-                   <div class="produto-overlay-text">
-                      <i class="fas fa-search-plus"></i>
-                   </div>
-                 </div>
-             </div>                  
-             <p class="white_font produto-title">JANELAS</p>                  
-          </div>
-          <div class="produto">
-             <div class="produto-img-container">
-                <img class="produto-img" src="{{ asset('img/produto3.jpg') }}" alt="#" />
-                <div class="overlay">
-                   <div class="produto-overlay-text">
-                      <i class="fas fa-search-plus"></i>
-                   </div>
-                 </div>
-             </div>                  
-             <p class="white_font produto-title">VIDROS</p>                  
-          </div>
-       </div>
-       <div class="produto-btn-wrapper">
-          <a class="example_b" href="{{ route('produtos.view') }}">
-            VER TODOS
-          </a>
-       </div> --}}
 
       <div id="splide" class="splide">
          <div class="splide__track">
             <ul class="splide__list">
-               <li class="splide__slide">
-                  <div class="splide__slide__container">
-                     <img src="{{ asset('img/slide1.jpg') }}">
-                  </div>
-                  <p class="produto-title">Produto1</p>
-               </li>
-               <li class="splide__slide">
-                  <div class="splide__slide__container">
-                     <img src="{{ asset('img/slide2.jpg') }}">
-                  </div>
-                  <p class="produto-title">Produto2</p>
-               </li>
-               <li class="splide__slide">
-                  <div class="splide__slide__container">
-                     <img src="{{ asset('img/slide3.jpg') }}">
-                  </div>
-                  <p class="produto-title">Produto3</p>
-               </li>
-               <li class="splide__slide">
-                  <div class="splide__slide__container">
-                     <img src="{{ asset('img/slide4.jpg') }}">
-                  </div>
-                  <p class="produto-title">Produto4</p>
-               </li>
+               @foreach ($categorias as $categoria)
+                  <li class="splide__slide">
+                     <div class="splide__slide__container">
+                        <img src="{{ asset($categoria->foto_url) }}">
+                     </div>
+                  <p class="produto-title">{{ $categoria->nome }}</p>
+                  </li>
+               @endforeach
             </ul>
          </div>
       </div>
@@ -185,43 +127,17 @@
        <div id="splide-obras" class="splide">
          <div class="splide__track">
             <ul class="splide__list">
-               <li class="splide__slide">
-                  <video class="obra-video" controls>
-                     <source src="{{ asset('vid/demo-video.mp4') }}" type="video/mp4">
-                  </video>
-               </li>
-               <li class="splide__slide">
-                  <video class="obra-video" controls>
-                     <source src="{{ asset('vid/demo-video.mp4') }}" type="video/mp4">
-                  </video>
-               </li>
-               <li class="splide__slide">
-                  <video class="obra-video" controls>
-                     <source src="{{ asset('vid/demo-video.mp4') }}" type="video/mp4">
-                  </video>
-               </li>
-               <li class="splide__slide">
-                  <video class="obra-video" controls>
-                     <source src="{{ asset('vid/demo-video.mp4') }}" type="video/mp4">
-                  </video>
-               </li>
+               @foreach ($obras as $obra)
+                  <li class="splide__slide">
+                     <video class="obra-video" controls>
+                        <source src="{{ asset($obra->video_url) }}" type="video/mp4">
+                     </video>
+                  </li>                   
+               @endforeach
             </ul>
          </div>
-      </div>       
-
-       {{-- <div class="obras-list">
-          <video class="obra-video" controls>
-             <source src="videos/demo-video.mp4" type="video/mp4">
-           </video>
-       </div>
-
-       <div class="obras-btn-wrapper">
-          <a class="example_b" href="{{ route('obras.view') }}">
-            VER TODAS
-          </a>
-       </div> --}}
+      </div>
     </div>
-
  </div>
 
  <div id="orcamento" class="about_section layout_padding" style="background: #fff;">   

@@ -16,13 +16,16 @@ use Illuminate\Support\Facades\Route;
 // === NAVIGATION ===
 Route::get('/', 'NavigationController@home')->name('home');
 Route::get('/produtos-view', 'NavigationController@produtos')->name('produtos.view');
+Route::get('/produtos-view/{categoria}', 'NavigationController@getAllProdutosFromCategoria')->name('produto');
 Route::get('/obras-view', 'NavigationController@obras')->name('obras.view');
 
 // === DASHBOARD ===
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', 
-    'NavigationController@dashboardProdutos')->name('dashboard');
+    'NavigationController@dashboardCategorias')->name('dashboard');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-obras', 
-    'NavigationController@dashboardObras')->name('dashboard.obras');    
+    'NavigationController@dashboardObras')->name('dashboard.obras');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard-produtos', 
+    'NavigationController@dashboardProdutos')->name('dashboard.produtos');
 
 // === CATEGORIAS ===
 // Index Admin

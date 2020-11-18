@@ -108,7 +108,8 @@
 
    var splideObras = new Splide( '#splide-obras', {
       pagination  : false,
-      rewind      : true,
+      // rewind      : true,
+      type        : 'loop',
    } ).mount();
 
 </script>

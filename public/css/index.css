@@ -64,8 +64,8 @@ p {
     font-weight: 300;
 }
 
-.img-responsive {
-    max-width: 100%;
+.img-responsive2 {
+    max-width: 80%;
     border-radius: 10px;
 }
 
@@ -331,7 +331,8 @@ p {
   flex-grow: 1;
   width: 500px;
   padding: 60px 30px 30px 30px;
-  text-align: center;  
+  text-align: center;
+  align-self: center;
 }
 
 .about-itens {
