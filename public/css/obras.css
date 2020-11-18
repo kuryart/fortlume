@@ -1,0 +1,214 @@
+.produto-main {
+  /* box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23); */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 2rem;
+  /* padding: 15px 15px 15px 15px; */
+  padding: 1rem 2.5rem 1rem 2.5rem;
+}
+.grid > div {
+  /* background: #EDE7F6; */
+  padding: 1.5rem 1rem 3rem 1rem;
+  border-radius: 1rem;
+}
+
+.produto-img {
+  /* display: block; */
+  margin: 0 auto 0 auto;
+  /* object-fit: cover; */
+  border-radius: 10px;
+  /* border: rgb(206, 206, 206) 1px solid; */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.produto-title {
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
+  margin: 25px 0 15px 0;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.produto-description {
+  font-family: 'Nunito', sans-serif;
+  text-indent: 25px;
+  text-align: justify;
+}
+
+.main-container {
+  margin: 0 0 0 0;
+  background-color: #fff;
+}
+
+.main-title {
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin: 3rem 0 1.5rem 0;
+  /* color: #1f5a76; */
+  /* color: #80b5c2; */
+  color: #1f5a76;
+}
+
+.categoria-title {
+  font-size: 20px;
+  text-align: left;
+  margin: 0.75rem 0 0.75rem 3.5rem;
+  color: aliceblue;
+  text-transform: uppercase;
+  font-family: 'Roboto', cursive;
+  letter-spacing: 2px;
+}
+
+.categoria-title-container {
+  /* background-color: #1f5a76; */
+  background-color: #333;
+  padding: 0.1rem 0 0.1rem 0;
+  /* border-radius: 10px 10px 0 0; */
+}
+
+.main-container {
+  margin: 0 auto 0 auto;
+}
+
+.produtos-gallery-container {
+  /* margin: 1rem 1rem 5rem 1rem; */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border-radius: 10px;
+}
+
+.zoom {
+  transition: transform .2s;
+}
+
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.produto-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.produto-img:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.ml7 {
+  position: relative;
+  /* font-weight: 900; */
+  /* font-size: 3.7em; */
+
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Bebas Neue', cursive;
+  font-weight: bold;
+  letter-spacing: 6px;
+  margin: 0 0 1.5rem 0;
+  padding: 3rem 0 0 0;
+  /* color: #1f5a76; */
+  /* color: #80b5c2; */
+  color: #1f5a76;  
+
+
+}
+.ml7 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+.ml7 .letter {
+  transform-origin: 0 100%;
+  display: inline-block;
+  line-height: 1em;
+  color: #1f5a76;
+}
+
+.obra-video {
+  margin: 0 0 4rem 0;
+}

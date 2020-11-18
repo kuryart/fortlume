@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Obra extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'video_url'
+    ];
+
+
 }
