@@ -23,8 +23,8 @@
             <strong>Foto:</strong>
           </div>            
           <div class="form-group">
-            <label class="label-selecao-arquivo" for="produto-add-img"><strong>Selecionar &#187;</strong></label>
-            <input id="produto-add-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+            <label class="label-selecao-arquivo" for="categoria-add-img"><strong>Selecionar &#187;</strong></label>
+            <input id="categoria-add-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
           </div>          
           <div class="form-footer">
             <button type="submit" class="btn-save">Salvar</button>
@@ -63,8 +63,8 @@
             <strong>Foto:</strong>
           </div>            
           <div class="form-group">
-            <label class="label-selecao-arquivo" for="produto-edit-img"><strong>Selecionar &#187;</strong></label>
-            <input id="produto-edit-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+            <label class="label-selecao-arquivo" for="categoria-edit-img"><strong>Selecionar &#187;</strong></label>
+            <input id="categoria-edit-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
           </div>
           <div class="form-footer">
             <button type="submit" class="btn-save">Salvar</button>
