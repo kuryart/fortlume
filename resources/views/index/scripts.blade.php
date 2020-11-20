@@ -102,9 +102,9 @@
 		},
 	} ).mount();
 
-   splide.on( 'click', function() {
-      window.location = "http://www.google.com/";
-   } );
+   // splide.on( 'click', function() {
+   //    window.location = "http://www.google.com/";
+   // } );
 
    var splideObras = new Splide( '#splide-obras', {
       pagination  : false,
@@ -112,4 +112,10 @@
       type        : 'loop',
    } ).mount();
 
+</script>
+
+<script>
+   function goToCategoria(categoria) {
+      window.location = categoria;
+   }
 </script>

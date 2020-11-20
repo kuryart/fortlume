@@ -104,11 +104,11 @@
          <div class="splide__track">
             <ul class="splide__list">
                @foreach ($categorias as $categoria)
-                  <li class="splide__slide">
+                  <li class="splide__slide" onclick="goToCategoria('{{ route('produto', $categoria) }}')">
                      <div class="splide__slide__container">
                         <img src="{{ asset($categoria->foto_url) }}">
                      </div>
-                  <p class="produto-title">{{ $categoria->nome }}</p>
+                     <p class="produto-title">{{ $categoria->nome }}</p>
                   </li>
                @endforeach
             </ul>
@@ -140,30 +140,47 @@
     </div>
  </div>
 
- <div id="orcamento" class="about_section layout_padding" style="background: #fff;">   
-    <div class="orcamento-grid">
-       <div class="orcamento-title">
-          <h4>ORÇAMENTO</h4>
-          <h3 class="" style="text-transform: none !important">Solicite um orçamento personalizado</h3>
-          <div class="contact-form">
-             <form action="mailto:kuryart1@gmail.com" method="post" enctype="text/plain">
-                <input type="text" name="name" placeholder="Nome" />
-                <input type="email" name="mail" placeholder="Email" />
-                <textarea name="comment" placeholder="Mensagem"></textarea>
+   <div id="orcamento" class="about_section layout_padding" style="background: #fff;">    
+      <div class="obras-title">
+         <h4>ORÇAMENTO</h4>
+         <h3 style="text-transform: none !important">Solicite um orçamento personalizado</h3>
+      </div>
+      
+      <div class="container">
+         <form action="{{ url('/contact') }}" method="post">
+            @csrf
+            
+            <div class="row">
+               <div class="col-25">
+                  <label for="name">Nome</label>
+               </div>
+               <div class="col-75">
+                  <input type="text" id="name" name="name" placeholder="Seu nome">
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-25">
+                  <label for="email">Email</label>
+               </div>
+               <div class="col-75">
+                  <input type="email" id="email" name="email" placeholder="Seu email">
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-25">
+                  <label for="content">Mensagem</label>
+               </div>
+               <div class="col-75">
+                  <textarea id="content" name="content" placeholder="Escreva sua solicitação" style="height:200px"></textarea>
+               </div>
+            </div>
+            <div class="row">
+               <input type="submit" value="Enviar">
+            </div>
+         </form>
+      </div>
+   </div>
 
-                <div class="produto-btn-wrapper">
-                   <input type="submit" value="ENVIAR">
-                </div>
-             </form>
-          </div>            
-       </div>
-       
-       <div class="orcamento-list">
-          <img class="budget-image" src="{{ asset('img/budget.png') }}" alt="#" />
-       </div>
-    </div>         
-    
- </div>
     <footer id="contato" class="footer">            
        <ul class="footer__nav">
           <li class="nav__item">

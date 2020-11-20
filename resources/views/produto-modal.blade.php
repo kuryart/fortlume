@@ -23,11 +23,11 @@
               </select>
             </div>
             <div class="form-group modal-foto-title">
-              <strong>Foto:</strong>
+              <strong>Foto</strong><i> (selecione uma ou mais):</i>
             </div>            
             <div class="form-group">
               <label class="label-selecao-arquivo" for="produto-add-img"><strong>Selecionar &#187;</strong></label>
-              <input id="produto-add-img" type="file" name="foto" class="form-control input-img input-custom" accept="image/*">
+              <input id="produto-add-img" type="file" name="foto[]" class="form-control input-img input-custom" accept="image/*" multiple>
             </div>
           </div>
           <div class="form-footer">

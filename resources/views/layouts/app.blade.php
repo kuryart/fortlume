@@ -113,8 +113,6 @@
                         var action = "{{ route('categorias.update', '||x||') }}";
                         var newAction = action.replace("||x||", categoriaId);                        
                         form.setAttribute("action", newAction);
-                        // INPUTS
-                        // var nome = document.getElementById("categoria-edit-nome");
                     } else if (modal.id === "categoria-modal-delete") {
                         var form = document.getElementById("categoria-form-delete");
                         var categoriaId = findByAttributeInParent2(event.target, "data-categoriaId");                        
@@ -124,24 +122,21 @@
                         console.log(newAction);
                         form.setAttribute("action", newAction);
                     } else if (modal.id === "produto-modal-edit") {
-                        // ACTION
                         var form = document.getElementById("produto-form-edit");
                         var produtoId = findByAttributeInParent2(event.target, "data-produtoId");                        
                         var action = "{{ route('produtos.update', '||x||') }}";
                         var newAction = action.replace("||x||", produtoId);                        
                         form.setAttribute("action", newAction);
-                        // INPUTS
-                        // var nome = document.getElementById("produto-edit-nome");
-                        // var descricao = getElementById("produto-edit-descricao");
-                        // var categoria = getElementById("produto-edit-categoria");
-                        // var foto = getElementById("produto-edit-foto");
-
-                        // nome.setAttribute("value", produtoId);
-
                     } else if (modal.id === "produto-modal-delete") {
                         var form = document.getElementById("produto-form-delete");
                         var produtoId = findByAttributeInParent2(event.target, "data-produtoId");                        
                         var action = "{{ route('produtos.destroy', '||x||') }}";
+                        var newAction = action.replace("||x||", produtoId);                        
+                        form.setAttribute("action", newAction);
+                    } else if (modal.id === "obra-modal-delete") {
+                        var form = document.getElementById("obra-form-delete");
+                        var produtoId = findByAttributeInParent2(event.target, "data-obraId");                        
+                        var action = "{{ route('obras.destroy', '||x||') }}";
                         var newAction = action.replace("||x||", produtoId);                        
                         form.setAttribute("action", newAction);
                     }

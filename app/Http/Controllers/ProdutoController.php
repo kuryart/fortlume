@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produto;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ProdutoController extends Controller
 {
@@ -39,24 +40,25 @@ class ProdutoController extends Controller
     {                
         $request->validate([
             'categoria_id' => 'required',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
+            'foto.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|',
         ]);
 
-        // Armazena imagem
-        $imageExtension = $request->foto->extension();
-        $imageName = time().'.'.$imageExtension;
-        $imagePath = 'img/produtos';
-        $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
-        $imageUrl = '/storage/'.$imageStorePath;
-        
-        // $imageUrl = $imageStorePath;
+        $files = $request->file('foto');
 
-        $produto = Produto::create([
-          'categoria_id' => $request->categoria_id,
-          'foto_url' => $imageUrl,
-        ]);
+        for ($i=0; $i < count($files); $i++) { 
+            // Armazena imagem
+            $imageExtension = $files[$i]->extension();
+            $imageName = time().$i.'.'.$imageExtension;
+            $imagePath = 'img/produtos';
+            $imageStorePath = $files[$i]->storeAs($imagePath, $imageName, 'public');
+            $imageUrl = '/storage/'.$imageStorePath;
 
-        // toastr()->success('Produto criado com sucesso.');
+            // Cria o produto
+            $produto = Produto::create([
+                'categoria_id' => $request->categoria_id,
+                'foto_url' => $imageUrl,
+            ]);            
+        }
 
         return redirect()->route('dashboard.produtos');
     }
@@ -74,23 +76,25 @@ class ProdutoController extends Controller
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
         $imageUrl = '/storage/'.$imageStorePath;
-        
-        // $imageUrl = $imageStorePath;
+        $oldImageUrl = str_replace('/storage', "", $produto->foto_url);
 
+        // Atualiza o produto
         $produto->update([
             'categoria_id' => $request->categoria_id,
             'foto_url' => $imageUrl,
         ]);
 
-        // toastr()->success('Produto atualizado com sucesso.');
+        Storage::disk('public')->delete($oldImageUrl);
+
         return redirect()->route('dashboard.produtos');
     }
 
     public function destroy(Produto $produto)
     {
+        $oldImageUrl = str_replace('/storage', "", $produto->foto_url);
         $produto->delete();
+        Storage::disk('public')->delete($oldImageUrl);
 
-        // toastr()->success('Produto excluído com sucesso.');
         return redirect()->route('dashboard.produtos');
     }
 }

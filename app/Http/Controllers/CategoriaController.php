@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categoria;
+use Illuminate\Support\Facades\Storage;
 
 class CategoriaController extends Controller
 {
@@ -71,11 +72,14 @@ class CategoriaController extends Controller
         $imagePath = 'img/produtos';
         $imageStorePath = $request->file('foto')->storeAs($imagePath, $imageName, 'public');
         $imageUrl = '/storage/'.$imageStorePath;
+        $oldImageUrl = str_replace('/storage', "", $categoria->foto_url);
 
         $categoria->update([
           'nome' => $request->nome,
           'foto_url' => $imageUrl,
         ]);
+
+        Storage::disk('public')->delete($oldImageUrl);
 
         // toastr()->success('Produto atualizado com sucesso.');
         return redirect()->route('dashboard');
@@ -83,7 +87,9 @@ class CategoriaController extends Controller
 
     public function destroy(Categoria $categoria)
     {
+        $oldImageUrl = str_replace('/storage', "", $categoria->foto_url);
         $categoria->delete();
+        Storage::disk('public')->delete($oldImageUrl);
 
         // toastr()->success('Produto excluído com sucesso.');
         return redirect()->route('dashboard');

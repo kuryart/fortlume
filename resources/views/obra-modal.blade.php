@@ -87,7 +87,7 @@
          <div class="form-container">
           <div class="form-body">
             <div class="form-group">
-              <p class="delete-modal-text">Aviso! Esta operação irá excluir o obra permanentemente. Tem certeza que deseja continuar?</p>
+              <p class="delete-modal-text">Aviso! Esta operação irá excluir a obra permanentemente. Tem certeza que deseja continuar?</p>
             </div>
           </div>
           <div class="form-footer">

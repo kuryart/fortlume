@@ -26,7 +26,10 @@
                     @foreach ($obras as $obra)
                         <video class="obra-video" controls>
                            <source src="{{ asset($obra->video_url) }}" type="video/mp4">
-                         </video>     
+                         </video>
+                         <button data-modal="obra-modal-delete" data-obraId="{{ $obra->id }}" class="open-modal obra-btn-delete">
+                            <i class="fas fa-times"></i>
+                        </button>
                     @endforeach
                 </div>
             </div>

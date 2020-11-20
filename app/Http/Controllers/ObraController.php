@@ -75,23 +75,24 @@ class ObraController extends Controller
         $imagePath = 'vid/obras';
         $imageStorePath = $request->file('video')->storeAs($imagePath, $imageName, 'public');
         $imageUrl = '/storage/'.$imageStorePath;
-        
-        // $imageUrl = $imageStorePath;
+        $oldImageUrl = str_replace('/storage', "", $obra->video_url);
 
         $obra->update([
             'video_url' => $imageUrl,
         ]);
 
-        // toastr()->success('Obra atualizado com sucesso.');
-        return redirect()->route('dashboard');
+        Storage::disk('public')->delete($oldImageUrl);
+
+        return redirect()->route('dashboard.obras');
     }
 
     public function destroy(Obra $obra)
     {
+        $oldImageUrl = str_replace('/storage', "", $obra->video_url);
         $obra->delete();
+        Storage::disk('public')->delete($oldImageUrl);
 
-        // toastr()->success('Obra excluído com sucesso.');
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard.obras');
     }    
 
 }

@@ -95,7 +95,7 @@
          <div class="form-container">
           <div class="form-body">
             <div class="form-group">
-              <p class="delete-modal-text">Aviso! Esta operação irá excluir a categoria permanentemente. Tem certeza que deseja continuar? </p>
+              <p class="delete-modal-text">Aviso! Esta operação irá excluir permanentemente a categoria e todos os produtos relacionados a ela. Tem certeza que deseja continuar? </p>
             </div>
           </div>
           <div class="form-footer">
